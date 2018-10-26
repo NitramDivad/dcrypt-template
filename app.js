@@ -5,6 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 
 var apiRouter = require('./routes/book');
+var apiMsgRouter = require('./routes/sentmessages');
+var apiGameStats = require('./routes/gamestats');
+//var apiProfile = require('./routes/profile.js');
+var apiRcvdRouter = require('./routes/receivedmessages');
 
 var app = express();
 
@@ -14,6 +18,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/mean-angular6')));
 app.use('/', express.static(path.join(__dirname, 'dist/mean-angular6')));
 app.use('/api', apiRouter);
+app.use('/api2', apiMsgRouter);
+app.use('/api3', apiRcvdRouter);
+app.use('/api4', apiGameStats);
+//app.use('/api5', apiProfile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

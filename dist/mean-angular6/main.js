@@ -78,6 +78,15 @@ var ApiService = /** @class */ (function () {
         var body = res;
         return body || {};
     };
+    ApiService.prototype.getMsgs = function () {
+        return this.http.get('/api2', httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    ApiService.prototype.getRecvdMsgs = function () {
+        return this.http.get('/api3', httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    ApiService.prototype.getStats = function () {
+        return this.http.get('/api4', httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
     ApiService.prototype.getBooks = function () {
         return this.http.get(apiUrl, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(this.extractData), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
@@ -183,14 +192,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _book_book_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./book/book.component */ "./src/app/book/book.component.ts");
-/* harmony import */ var _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./book-detail/book-detail.component */ "./src/app/book-detail/book-detail.component.ts");
-/* harmony import */ var _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./book-create/book-create.component */ "./src/app/book-create/book-create.component.ts");
-/* harmony import */ var _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book-edit/book-edit.component */ "./src/app/book-edit/book-edit.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _book_book_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./book/book.component */ "./src/app/book/book.component.ts");
+/* harmony import */ var _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./book-detail/book-detail.component */ "./src/app/book-detail/book-detail.component.ts");
+/* harmony import */ var _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book-create/book-create.component */ "./src/app/book-create/book-create.component.ts");
+/* harmony import */ var _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book-edit/book-edit.component */ "./src/app/book-edit/book-edit.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -208,30 +218,41 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var appRoutes = [
     {
         path: 'books',
-        component: _book_book_component__WEBPACK_IMPORTED_MODULE_3__["BookComponent"],
+        component: _book_book_component__WEBPACK_IMPORTED_MODULE_4__["BookComponent"],
         data: { title: 'Book List' }
     },
     {
         path: 'book-details/:id',
-        component: _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_4__["BookDetailComponent"],
+        component: _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_5__["BookDetailComponent"],
         data: { title: 'Book Details' }
     },
     {
         path: 'book-create',
-        component: _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_5__["BookCreateComponent"],
+        component: _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_6__["BookCreateComponent"],
         data: { title: 'Create Book' }
     },
     {
         path: 'book-edit/:id',
-        component: _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_6__["BookEditComponent"],
+        component: _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_7__["BookEditComponent"],
         data: { title: 'Edit Book' }
     },
     { path: '',
         redirectTo: '/books',
         pathMatch: 'full'
+    },
+    {
+        path: 'messages',
+        component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_3__["MessagesComponent"],
+        data: { title: 'Messages' }
+    },
+    {
+        path: 'gamestats',
+        component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_3__["MessagesComponent"],
+        data: { title: 'GameStats' }
     }
 ];
 var AppModule = /** @class */ (function () {
@@ -241,27 +262,28 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-                _book_book_component__WEBPACK_IMPORTED_MODULE_3__["BookComponent"],
-                _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_4__["BookDetailComponent"],
-                _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_5__["BookCreateComponent"],
-                _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_6__["BookEditComponent"]
+                _book_book_component__WEBPACK_IMPORTED_MODULE_4__["BookComponent"],
+                _book_detail_book_detail_component__WEBPACK_IMPORTED_MODULE_5__["BookDetailComponent"],
+                _book_create_book_create_component__WEBPACK_IMPORTED_MODULE_6__["BookCreateComponent"],
+                _book_edit_book_edit_component__WEBPACK_IMPORTED_MODULE_7__["BookEditComponent"],
+                _messages_messages_component__WEBPACK_IMPORTED_MODULE_3__["MessagesComponent"]
             ],
             imports: [
-                _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(appRoutes),
+                _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"].forRoot(appRoutes),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
                 //BrowserAnimationsModule,
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatTableModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatPaginatorModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatSortModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatProgressSpinnerModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatIconModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatCardModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatFormFieldModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -646,6 +668,7 @@ var BookComponent = /** @class */ (function () {
         var _this = this;
         this.api.getBooks()
             .subscribe(function (res) {
+            console.log('book');
             console.log(res);
             _this.books = res;
         }, function (err) {
@@ -676,6 +699,113 @@ var BookDataSource = /** @class */ (function (_super) {
     BookDataSource.prototype.disconnect = function () {
     };
     return BookDataSource;
+}(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["DataSource"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/messages/messages.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lc3NhZ2VzL21lc3NhZ2VzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/messages/messages.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  messages works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/messages/messages.component.ts ***!
+  \************************************************/
+/*! exports provided: MessagesComponent, MsgDataSource */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagesComponent", function() { return MessagesComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MsgDataSource", function() { return MsgDataSource; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MessagesComponent = /** @class */ (function () {
+    function MessagesComponent(api) {
+        this.api = api;
+        this.dataSource = new MsgDataSource(this.api);
+    }
+    MessagesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.api.getMsgs()
+            .subscribe(function (res) {
+            console.log('messages');
+            console.log(res);
+            _this.messages = res;
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    MessagesComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-messages',
+            template: __webpack_require__(/*! ./messages.component.html */ "./src/app/messages/messages.component.html"),
+            styles: [__webpack_require__(/*! ./messages.component.css */ "./src/app/messages/messages.component.css")]
+        }),
+        __metadata("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_1__["ApiService"]])
+    ], MessagesComponent);
+    return MessagesComponent;
+}());
+
+var MsgDataSource = /** @class */ (function (_super) {
+    __extends(MsgDataSource, _super);
+    function MsgDataSource(api) {
+        var _this = _super.call(this) || this;
+        _this.api = api;
+        return _this;
+    }
+    MsgDataSource.prototype.connect = function () {
+        return this.api.getMsgs();
+    };
+    MsgDataSource.prototype.disconnect = function () {
+    };
+    return MsgDataSource;
 }(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["DataSource"]));
 
 

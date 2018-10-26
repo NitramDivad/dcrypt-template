@@ -19,6 +19,7 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.api.getBooks()
       .subscribe(res => {
+        console.log('book');
         console.log(res);
         this.books = res;
       }, err => {

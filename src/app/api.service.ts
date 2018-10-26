@@ -36,6 +36,23 @@ export class ApiService {
     return body || { };
   }
 
+  getMsgs(): Observable<any> {
+    return this.http.get('/api2', httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  getRecvdMsgs(): Observable<any> {
+    return this.http.get('/api3', httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  getStats(): Observable<any> {
+    return this.http.get('/api4', httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
   getBooks(): Observable<any> {
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),

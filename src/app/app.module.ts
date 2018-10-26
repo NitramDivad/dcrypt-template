@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MessagesComponent } from './messages/messages.component';
 import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
@@ -46,6 +47,16 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/books',
     pathMatch: 'full'
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent,
+    data: { title: 'Messages' }
+  },
+  {
+    path: 'gamestats',
+    component: MessagesComponent,
+    data: { title: 'GameStats' }
   }
 ];
 
@@ -55,7 +66,8 @@ const appRoutes: Routes = [
     BookComponent,
     BookDetailComponent,
     BookCreateComponent,
-    BookEditComponent
+    BookEditComponent,
+    MessagesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

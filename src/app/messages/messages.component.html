@@ -1,3 +1,10 @@
-<p>
-  messages works!
-</p>
+<div class="container">
+  <h1>Messages</h1>
+
+  <!-- ng-repeat loops through data to build list -->
+  <ul>
+    <li ng-repeat="users in user">
+      {{messages.DecryptedMsg}}
+    </li>
+  </ul>
+</div>

@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
@@ -32,7 +33,9 @@
     "morgan": "^1.9.1",
     "rxjs": "~6.3.3",
     "serve-favicon": "^2.5.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
+    "bootstrap": "^4.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
